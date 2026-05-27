@@ -9,3 +9,4 @@ __pycache__/
 database/chroma/
 models/
 temp/
+vosk-model-small-en-us-0.15/
