@@ -136,3 +136,18 @@ class WakeWordDetector:
         except Exception:
             pass
         p.terminate()
+
+if __name__ == "__main__":
+    detector = WakeWordDetector()
+    def test_callback():
+        print(">>> Callback function triggered: Wake word detected! <<<")
+    
+    detector.start(test_callback)
+    print("Listening for wake words: 'hey jarvis', 'jarvis', 'arre jarvis', 'yo jarvis', 'jarvis sun'...")
+    print("Press Ctrl+C to exit.")
+    try:
+        while True:
+            time.sleep(0.5)
+    except KeyboardInterrupt:
+        print("\nStopping detector...")
+        detector.stop()

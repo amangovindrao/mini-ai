@@ -157,3 +157,10 @@ class SpeechToText:
                     os.remove(temp_wav_path)
                 except Exception:
                     pass
+
+if __name__ == "__main__":
+    stt = SpeechToText()
+    print("Microphone listening... Speak now.")
+    res = stt.listen_and_transcribe()
+    print("Transcription result:")
+    print(res)

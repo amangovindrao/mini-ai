@@ -163,3 +163,10 @@ class TextToSpeech:
             
         total_time = time.time() - total_start_time
         print(f"TTS speak completed. Total time (gen + play): {total_time:.2f}s")
+
+if __name__ == "__main__":
+    # Test block to run directly
+    import os
+    tts = TextToSpeech(voice="male")
+    test_phrase = "Hello. JARVIS Text to Speech system is fully operational."
+    tts.speak(test_phrase, emotion="calm", language="english", add_filler=True)
