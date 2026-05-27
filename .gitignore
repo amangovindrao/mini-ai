@@ -1,0 +1,11 @@
+# JARVIS-AI  |  Phase X  |  .gitignore
+node_modules
+venv/
+node_modules/
+.env
+__pycache__/
+*.pyc
+*.db
+database/chroma/
+models/
+temp/

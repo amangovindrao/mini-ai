@@ -1,0 +1,17 @@
+{
+  "_comment": "JARVIS-AI  |  Phase X  |  package.json",
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "three": "*",
+    "@react-three/fiber": "*",
+    "@react-three/drei": "*",
+    "framer-motion": "*",
+    "zustand": "*",
+    "tailwindcss": "*",
+    "electron": "*",
+    "vite": "*",
+    "recharts": "*",
+    "react-grid-layout": "*"
+  }
+}

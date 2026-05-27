@@ -1,0 +1,18 @@
+# JARVIS-AI  |  Phase X  |  requirements.txt
+fastapi==0.110.0
+uvicorn
+websockets
+python-dotenv
+chromadb
+openai-whisper
+insightface
+onnxruntime
+opencv-python
+TTS
+webrtcvad
+vosk
+simpleaudio
+schedule
+langdetect
+fuzzywuzzy
+python-levenshtein
