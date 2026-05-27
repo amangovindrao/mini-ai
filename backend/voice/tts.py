@@ -1,9 +1,30 @@
 import os
 import re
+import sys
 import time
 import random
+import warnings
+from contextlib import contextmanager
 import numpy as np
 import simpleaudio as sa
+
+# Suppress annoying third-party library warnings (e.g. requests/urllib3 version mismatch)
+warnings.filterwarnings("ignore")
+
+@contextmanager
+def suppress_stdout_stderr():
+    """A context manager that redirects stdout and stderr to devnull to keep console clean"""
+    with open(os.devnull, 'w') as fnull:
+        old_stdout = sys.stdout
+        old_stderr = sys.stderr
+        sys.stdout = fnull
+        sys.stderr = fnull
+        try:
+            yield
+        finally:
+            sys.stdout = old_stdout
+            sys.stderr = old_stderr
+
 from TTS.api import TTS
 
 # Define dictionaries at the top
@@ -33,7 +54,8 @@ class TextToSpeech:
         self.voice_name = voice
         self.model_name = VOICE_MODELS.get(voice, "tts_models/multilingual/multi-dataset/your_tts")
         print(f"Initializing TTS with voice model: {self.model_name}")
-        self.tts = TTS(model_name=self.model_name, gpu=False)
+        with suppress_stdout_stderr():
+            self.tts = TTS(model_name=self.model_name, gpu=False)
         print("TTS model loaded and ready")
 
     def _get_speaker_wav(self, emotion):
@@ -136,7 +158,8 @@ class TextToSpeech:
             gen_start = time.time()
             
             # Synthesize sentence
-            wav = self.tts.tts(sentence, **tts_kwargs)
+            with suppress_stdout_stderr():
+                wav = self.tts.tts(sentence, **tts_kwargs)
             audio_data = np.array(wav)
             
             # Scale float range [-1.0, 1.0] to 16-bit PCM integer range
